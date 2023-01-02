@@ -1,0 +1,26 @@
+// Make sure you made a new console application project in Delphi as other types will not work.
+// MAke sure to copy everyhing including the uses.
+uses
+  SysUtils,
+  Classes,
+  IdBaseComponent,
+  IdComponent,
+  IdUDPBase,
+  IdUDPClient;
+
+var
+UDPClient: TIdUDPClient;
+
+begin
+UDPClient := TIdUDPClient.Create(nil);
+try
+UDPClient.Host := 'IP_ADDRESS'; //replace IP_ADDRESS with the desired IP address
+UDPClient.Port := 12345; //replace 12345 with the desired port number
+while True do
+begin
+  UDPClient.Send('Hello World');
+end;
+finally
+UDPClient.Free;
+end;
+end.
